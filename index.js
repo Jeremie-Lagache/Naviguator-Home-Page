@@ -1,6 +1,6 @@
 
 let stockMarket = document.querySelector('.stock-market')
-const stocksList = ["Apple", "Tesla", "AMD", "Nvidia"]
+const stocksList = ["AAPL", "TSLA", "NVDA", "AMD"]
 
 const urlList = ['https://api.polygon.io/v2/aggs/ticker/AAPL/prev?adjusted=true&apiKey=L9XIBrgn9yTylyVIYHLgJoAy5COP2HnQ', 
                  'https://api.polygon.io/v2/aggs/ticker/TSLA/prev?adjusted=true&apiKey=L9XIBrgn9yTylyVIYHLgJoAy5COP2HnQ',
@@ -26,7 +26,7 @@ const urlList = ['https://api.polygon.io/v2/aggs/ticker/AAPL/prev?adjusted=true&
             if (rate === 0) {
                 rates[stockValue] = "0.0"
             } else {
-                rates[stockValue ]= rate
+                rates[stockValue] = rate
             }
         }
         console.log(rates);
@@ -38,7 +38,7 @@ const urlList = ['https://api.polygon.io/v2/aggs/ticker/AAPL/prev?adjusted=true&
             const stockValue = stocksList[stock]
             const stockElement = document.querySelector(`.${stockValue}`);
             rates[stockValue] < 0 ? undefined : rates[stockValue] = `+${rates[stockValue]}`
-            localStorage.getItem(stockValue) ? stockElement.innerHTML += `${localStorage.getItem(stockValue)} <div class="rate">&nbsp${rates[stockValue]}</div>` : ""
+            localStorage.getItem(stockValue) ? stockElement.innerHTML += `${localStorage.getItem(stockValue)} <div class="rate">&nbsp${rates[stockValue]}%</div>` : ""
             let ratedivs = document.querySelectorAll('.rate')
             ratedivs.forEach((ratediv) => {
                 const ratedivValue = parseFloat(ratediv.innerHTML.trim().replace(/[^\d.-]/g, ''));
@@ -64,28 +64,15 @@ const urlList = ['https://api.polygon.io/v2/aggs/ticker/AAPL/prev?adjusted=true&
 			response = xhr.target.response;
 
 			json = JSON.parse( response );
+            console.log(JSON.stringify(json.results[0].o));
 
-            if (json.ticker === "AAPL") {
-                const previousStock = localStorage.getItem('Apple')
-                localStorage.setItem('prevApple', previousStock)
-                localStorage.setItem("Apple", json.results[0].o)
-            } 
-            else if (json.ticker === "TSLA") {
-                const previousStock = localStorage.getItem('Tesla')
-                localStorage.setItem('prevTesla', previousStock)
-                localStorage.setItem("Tesla", json.results[0].o)
-            } 
-            else if (json.ticker === "NVDA") {
-                const previousStock = localStorage.getItem('Nvidia')
-                localStorage.setItem('prevNvidia', previousStock)
-                localStorage.setItem("Nvidia", json.results[0].o)
-            } 
-            else if (json.ticker === "AMD") {
-                const previousStock = localStorage.getItem('AMD')
-                localStorage.setItem('prevAMD', previousStock)
-                localStorage.setItem("AMD", json.results[0].o)
-            }
-
+                if (localStorage.getItem(json.ticker) !== JSON.stringify(json.results[0].o)) {
+                    const previousStock = localStorage.getItem(json.ticker)
+                    localStorage.setItem(`prev${json.ticker}`, previousStock)
+                    localStorage.setItem(json.ticker, json.results[0].o)
+                } else {
+                    console.log('still the same');
+                }
             console.log(json);
 		}
 
