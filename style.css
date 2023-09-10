@@ -97,3 +97,24 @@ a {
     transform-origin: 100% 100%;
 }
 
+.news {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.news h3 {
+    text-align: center;
+}
+
+.news div {
+    margin-top: 20px;
+}
+
+.news img {
+    height: 150px;
+}
+

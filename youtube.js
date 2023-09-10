@@ -1,2 +1,0 @@
-const id = {"web":{"client_id":"582393713357-i5c5rrpj6l6slvpmhl5ghkh5k22av7j4.apps.googleusercontent.com","project_id":"home-page-392314","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"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"}}
-const apiKey = 'AIzaSyBf7dS0wxAhvwYCIhbB7zSXqrt9N7n0sZI'
