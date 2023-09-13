@@ -100,21 +100,31 @@ a {
 .news {
     position: fixed;
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin-left: 20px;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    width: 500px;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #1d1d1d;
+    box-shadow: 0.1px 1px 5px 1px rgba(255, 255, 255, 0.233);
+}
+
+.news h5 {
+    width: 200px;
+    font-size: 12px;
 }
 
 .news h3 {
     text-align: center;
+    position: absolute;
 }
 
 .news div {
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-right: 50px;
 }
 
 .news img {
-    height: 150px;
+    height: 100px;
 }
 

@@ -84,7 +84,7 @@ const urlList = ['https://api.polygon.io/v2/aggs/ticker/AAPL/prev?adjusted=true&
 
 const newsDiv = document.querySelector('.news')
 
-var url = 'https://newsdata.io/api/1/news?apikey=pub_291137aaa00155fda9a367b9da4d72320d381&q=deep learning AND machine learning&country=gb'
+var url = 'https://newsdata.io/api/1/news?apikey=pub_291137aaa00155fda9a367b9da4d72320d381&q=intelligence artificielle OR bourse&country=fr'
 
 const getNews = (url) => {
     var req = new Request(url);
